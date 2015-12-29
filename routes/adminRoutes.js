@@ -1,4 +1,4 @@
-var appRouter = function(app) {
+var appAdminRouter = function(app) {
  
 app.get("/", function(req, res) {
     res.send("Hello World");
@@ -31,4 +31,4 @@ app.post("/node", function(req, res) {
  
 }
  
-module.exports = appRouter;
+module.exports = appAdminRouter;
