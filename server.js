@@ -3,6 +3,11 @@
 // BASE SETUP
 // =============================================================================
 
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
+
+var Bear     = require('./app/models/bear');
+
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
@@ -33,7 +38,33 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 
-router.route('/nodes')
+router.route('/bears')
+
+    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    .post(function(req, res) {
+        
+        var bear = new Bear();      // create a new instance of the Bear model
+        bear.name = req.body.name;  // set the bears name (comes from the request)
+
+        // save the bear and check for errors
+        bear.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Bear created!' });
+        });
+    })
+    .get(function(req, res) {
+        Bear.find(function(err, bears) {
+            if (err)
+                res.send(err);
+
+            res.json(bears);
+        });
+    });
+
+
+router.route('/raspNodes')
 
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
@@ -57,10 +88,10 @@ router.route('/nodes')
 
         //     res.json(bears);
         // });
-        res.json({ message: 'Here are nodes!' });   
+        res.json({ message: 'Here are raspNodes!' });   
     });
         
-router.route('/node')
+router.route('/raspNode')
 
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
@@ -84,7 +115,7 @@ router.route('/node')
 
         //     res.json(bears);
         // });
-        res.json({ message: 'Here is a node!' });   
+        res.json({ message: 'Here is a raspNode!' });   
     });
 
 
