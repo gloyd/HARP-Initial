@@ -6,7 +6,7 @@
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
 
-var Bear     = require('./app/models/bear');
+var Bear     = require('./models/bear');
 
 // call the packages we need
 var express    = require('express');        // call express
