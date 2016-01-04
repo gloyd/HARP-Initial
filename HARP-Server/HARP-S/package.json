@@ -1,7 +1,7 @@
 {
-  "name": "HA-API",
+  "name": "HARP-S-API",
   "version": "1.0.0",
-  "description": "Starting the HA Project",
+  "description": "Master Server for the HARP project!",
   "author": "Joseph Brysch",
   "license": "Apache 2.0",
   "dependencies": {
