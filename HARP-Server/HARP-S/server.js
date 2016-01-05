@@ -2,19 +2,15 @@
 
 // BASE SETUP
 // =============================================================================
-
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
+mongoose.connect('mongodb://localhost/testing');
 
-var Bear     = require('./models/bear');
+var RaspNode     = require('./models/raspNode');
 
-// call the packages we need
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
+var express    = require('express');
+var app        = express();
 var bodyParser = require('body-parser');
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -25,79 +21,54 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
+    
+    // TODO - Do logging!
+    console.log('Do some event logging!');
+    
+    next();
 });
 
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'Huzzzzzaaaaaah!!! HARP API is up and running!!!' });   
 });
 
 // more routes for our API will happen here
 
-router.route('/bears')
+router.route('/raspNodes')
 
-    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    // create a bear (accessed at POST http://localhost:8080/api/raspNode)
     .post(function(req, res) {
-        
-        var bear = new Bear();      // create a new instance of the Bear model
-        bear.name = req.body.name;  // set the bears name (comes from the request)
 
-        // save the bear and check for errors
-        bear.save(function(err) {
-            if (err)
+        //TODO - Do some data validation!
+        var raspNode = new RaspNode();
+        raspNode.name = raspNode.body.name;
+        raspNode.ip = raspNode.body.ip;
+
+        raspNode.save(function(err) {
+            if (err) {
                 res.send(err);
-
-            res.json({ message: 'Bear created!' });
+            }
+            else {
+                res.json({ message: 'RaspNode created!' });
+            }
         });
     })
     .get(function(req, res) {
-        Bear.find(function(err, bears) {
-            if (err)
+        RaspNode.find(function(err, raspNodes) {
+            if (err) {
                 res.send(err);
-
-            res.json(bears);
+            }
+            else {
+                res.json(raspNodes);
+            }
         });
     });
 
-
-router.route('/raspNodes')
-
-    // create a bear (accessed at POST http://localhost:8080/api/bears)
-    .post(function(req, res) {
-        
-        // var bear = new Bear();      // create a new instance of the Bear model
-        // bear.name = req.body.name;  // set the bears name (comes from the request)
-
-        // // save the bear and check for errors
-        // bear.save(function(err) {
-        //     if (err)
-        //         res.send(err);
-
-        //     res.json({ message: 'Bear created!' });
-        })
-
-        // get all the bears (accessed at GET http://localhost:8080/api/bears)
-    .get(function(req, res) {
-        // Bear.find(function(err, bears) {
-        //     if (err)
-        //         res.send(err);
-
-        //     res.json(bears);
-        // });
-        res.json({ message: 'Here are raspNodes!' });   
-    });
-        
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-
-
-
-
 
 // START THE SERVER
 // =============================================================================
