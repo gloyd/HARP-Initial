@@ -6,6 +6,8 @@
 
 #Do Prereq checks
 #Figure out what is needed (Mongo, Node, etc...)
+#Configure Network
+#Restart Network
 #Install Node
 #Install Mongo
 #Start Mongo
