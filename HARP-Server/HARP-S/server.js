@@ -43,8 +43,8 @@ router.route('/raspNodes')
 
         //TODO - Do some data validation!
         var raspNode = new RaspNode();
-        raspNode.name = raspNode.body.name;
-        raspNode.ip = raspNode.body.ip;
+        raspNode.name = req.body.name;
+        raspNode.ip = req.body.ip;
 
         raspNode.save(function(err) {
             if (err) {
