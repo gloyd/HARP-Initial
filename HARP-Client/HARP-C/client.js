@@ -5,11 +5,13 @@
 ************************************/
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('../HARP-C.properties');
-var property = properties.get('DBName');
-console.log('property is - '+ property);
+var databaseName = properties.get('DBName');
+
+var abilities = properties.get('Abilities');
+console.log(abilities);
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/HARPCDB');
+mongoose.connect('mongodb://localhost/' + databaseName);
 
 var RaspNode     = require('./models/raspNode');
 

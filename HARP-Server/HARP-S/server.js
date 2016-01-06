@@ -3,8 +3,12 @@
 * Author:   J. Brysch
 * Date :    01/04/2016
 ************************************/
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('../HARP-S.properties');
+var databaseName = properties.get('DBName');
+
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/HARPSDB');
+mongoose.connect('mongodb://localhost/' + databaseName);
 
 var RaspNode     = require('./models/raspNode');
 
