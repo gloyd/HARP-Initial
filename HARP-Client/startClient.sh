@@ -5,4 +5,4 @@
 ###################################
 
 #TODO - Check if Mongo is running, if not EXIT
-node ./HARP-C/client.js
+(cd HARP-C && node client.js)
