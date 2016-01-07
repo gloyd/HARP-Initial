@@ -24,12 +24,12 @@ var router = express.Router();
 
 router.use(function(req, res, next) {
     // TODO - Do logging!
-    console.log('Do some event logging!');
+    console.log('Something is happening!!');
     next();
 });
 
 router.get('/', function(req, res) {
-    res.json({ message: 'Huzzzzzaaaaaah!!! HARP Server API is up and running!!!' });   
+    res.json({ message: 'HARP Server API is up and running!!!' });   
 });
 
 router.route('/raspNodes')
