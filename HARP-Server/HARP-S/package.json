@@ -5,8 +5,9 @@
   "author": "Joseph Brysch",
   "license": "Apache 2.0",
   "dependencies": {
-    "body-parser": "*",
-    "express": "*",
-    "properties-reader": "*"
+    "body-parser": "~1.14.2",
+    "express": "~4.13.3",
+    "properties-reader": "~0.0.14",
+    "mongoose":"*"
   }
 }
