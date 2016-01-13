@@ -1,0 +1,8 @@
+#install SSH
+apt-get install ssh
+
+#install nmap
+apt-get install nmap
+
+#install DHCP server
+apt-get install isc-dhcp-server
