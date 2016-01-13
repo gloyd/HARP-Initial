@@ -1,4 +1,4 @@
-# HARP-Initial
+# HARP-Initial (AKA PROJECT JOEY)
 HARP (Home Automation with Raspberry Pi~s)
 The goal of this project is to have home automation using multiple Raspberry Pi.
 There will be two seperate projects, HARP-S (HARP-Server) and HARP-C (HARP-Client).
